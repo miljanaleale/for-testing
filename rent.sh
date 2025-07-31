@@ -1,44 +1,44 @@
 #!/bin/sh
 
-echo "Dobrodošli u PS5 servis za iznajmljivanje igrica!"
-echo "Za izlaz unesite 'exit'."
+echo "Welcome to the PS5 Game Rental Service!"
+echo "Type 'exit' at any time to quit."
 
 while true; do
     echo
-    printf "Unesite svoje ime: "
-    if ! read ime; then
-        echo "Doviđenja!"
+    printf "Enter your name: "
+    if ! read name; then
+        echo "Goodbye!"
         break
     fi
 
-    if [ "$ime" = "exit" ]; then
-        echo "Doviđenja!"
+    if [ "$name" = "exit" ]; then
+        echo "Goodbye!"
         break
     fi
 
-    if [ -z "$ime" ]; then
-        echo "Greška: Niste uneli ime. Pokušajte ponovo."
+    if [ -z "$name" ]; then
+        echo "Error: You didn't enter a name. Please try again."
         continue
     fi
 
-    printf "Zdravo %s! Koju PS5 igricu želite da igrate? " "$ime"
-    if ! read igrica; then
-        echo "Doviđenja!"
+    printf "Hi %s! Which PS5 game would you like to rent? " "$name"
+    if ! read game; then
+        echo "Goodbye!"
         break
     fi
 
-    if [ "$igrica" = "exit" ]; then
-        echo "Doviđenja!"
+    if [ "$game" = "exit" ]; then
+        echo "Goodbye!"
         break
     fi
 
-    if [ -z "$igrica" ]; then
-        echo "Greška: Niste uneli naziv igrice. Pokušajte ponovo."
+    if [ -z "$game" ]; then
+        echo "Error: You didn't enter a game title. Please try again."
         continue
     fi
 
-    echo "Igrica '$igrica' je uspešno iznajmljena korisniku $ime."
+    echo "Game '$game' has been successfully rented to $name."
     sleep 0.5
-    printf "Uživajte u igranju!\n"
-    echo "Zabeleženo u sistemu grešaka (stderr log)" 1>&2
+    printf "Enjoy your game!\n"
+    echo "Logged to stderr (for system tracking)" 1>&2
 done
